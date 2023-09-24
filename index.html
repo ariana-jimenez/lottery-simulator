@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lottery Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- ============================================ -->
+<!--                Landing                       -->
+<!-- ============================================ -->
+
+    <section id="landing-section">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h2 class="cs-title"><span class="cs-color">Lottery</span> Simulator</h2>
+                <p class="cs-text">
+                    Explore your chances of winning the Powerball lottery.
+                </p>
+                <a href="#main-section" class="cs-button-solid">Let's Start</a>
+            </div>
+            <div class="cs-stat-group">
+                <picture class="cs-background">
+                    <source media="(max-width: 600px)" srcset="assets/abstract_balls.jpg">
+                    <source media="(min-width: 601px)" srcset="assets/abstract_balls.jpg">
+                    <img loading="lazy" decoding="async" src="assets/abstract_balls.jpg" alt="abstract lotto balls" width="842" height="737" aria-hidden="true">
+                </picture>
+            </div>
+        </div>
+    </section>
+
+<!-- ============================================ -->
+<!--                Pick Numbers                  -->
+<!-- ============================================ -->
+
+    <section id="main-section">
+        <div class="cs-container">
+            <div class="cs-left-section">
+                <div class="cs-content">
+                    <h2 class="cs-title">Pick Your Numbers</h2>
+                </div>
+                <form id="cs-form-240" name="Contact Form" method="post">
+                    <label class="cs-label">
+                        Quick Pick
+                        <input type="checkbox" id="generate-random">
+                    </label>
+                    <label class="cs-label">
+                        Five numbers:
+                    </label>
+                        <input type="text" id="first-number" class="number-input" maxlength="2" required>
+                        <input type="text" id="second-number" class="number-input" maxlength="2" required>
+                        <input type="text" id="third-number" class="number-input" maxlength="2" required>
+                        <input type="text" id="fourth-number" class="number-input" maxlength="2" required>
+                        <input type="text" id="fifth-number" class="number-input" maxlength="2" required>
+                    
+                    <label class="cs-label">
+                        Powerball number:
+                        <br>
+                        <input type="text" id="powerball" class="number-input" maxlength="2" required>
+                    </label>
+                    <label class="cs-label">
+                        How many times do you want to play?
+                        <br>
+                        <input type="number" id="num-plays" required>
+                    </label>
+
+                    <button type="button" id="play-button" class="cs-button-solid">Play</button>
+                </form>
+                <p id="error-message"></p>
+            </div>
+            
+            <div class="cs-right-section">
+                <ul class="cs-ul">
+                    <span class="cs-topper">How to play</span>
+                    <br>
+                    <li class="cs-li">
+                        <picture class="cs-icon-wrapper">
+                            <img aria-hidden="true" src="assets/library-outline.svg" alt="books icon" class="cs-icon" width="36" height="36" decoding="async">
+                        </picture>
+                        <div class="cs-flex-group">
+                            <p class="cs-text">
+                                Enter five non-repeating numbers between 1 - 69, and one powerball number between 1 - 26. Or you can check the "Quick Pick" box to generate random numbers instead.
+                            </p>
+                        </div>
+                    </li>
+                    <span class="cs-topper">Prizes</span>
+                    <br>
+                    <li class="cs-li">
+                        <picture class="cs-icon-wrapper">
+                            <img aria-hidden="true" src="assets/cash-outline.svg" alt="cash icon" class="cs-icon" width="36" height="36" decoding="async">
+                        </picture>
+                        <div class="cs-flex-group">
+                            <p class="cs-text">
+                                The chart below shows the winning combinations, prizes, and odds of winning.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                <picture class="cs-picture">
+                    <source media="(max-width: 600px)" srcset="assets/odds.png">
+                    <source media="(min-width: 601px)" srcset="assets/odds.png">
+                    <img class="cs-img" aria-hidden="true" loading="lazy" decoding="async" src="assets/odds.png" alt="prize chart" width="462" height="438">
+                </picture>
+            </div>
+        </div>
+    </section>
+    
+<!-- ============================================ -->
+<!--                Results section               -->
+<!-- ============================================ -->
+
+    <section id="main-section">
+        <div class="cs-container" id="results-section">
+            <div class="cs-left-section">
+                <div class="cs-content">
+                    <h2 class="cs-title">Results</h2>
+                    <p class="cs-text">
+                        Click the "Play" button above to see your results. 
+                    </p>
+                </div>
+
+                <button class="accordion">Games Won</button>
+                <div id="games-won" class="panel"></div>
+
+                <button class="accordion">Games Lost</button>
+                <div id="games-lost" class="panel"></div>
+
+            </div>
+            <div class="cs-right-section ">
+                <ul class="cs-ul">
+                    <li class="cs-li">
+                        <picture class="cs-icon-wrapper">
+                            <img aria-hidden="true" src="assets/bar-chart-outline.svg" alt="bar chart icon" class="cs-icon" width="36" height="36" decoding="async">
+                        </picture>
+                        <div class="cs-flex-group">
+                            <span class="cs-header">Win Rate:</span>
+                            
+                            <p id="result-message-1"></p>
+                        </div>
+                    </li>
+                    <li class="cs-li">
+                        <picture class="cs-icon-wrapper">
+                            <img aria-hidden="true" src="assets/trending-down-outline.svg" alt="arrow up" class="cs-icon" width="36" height="36" decoding="async">
+                        </picture>
+                        <div class="cs-flex-group">
+                            <span class="cs-header">Total Spent:</span>
+                            <p id="result-message-2"></p>
+                        </div>
+                    </li>
+                    <li class="cs-li">
+                        <picture class="cs-icon-wrapper">
+                            <img aria-hidden="true" src="assets/trending-up-outline.svg" alt="arrow down" class="cs-icon" width="36" height="36" decoding="async">
+                        </picture>
+                        <div class="cs-flex-group">
+                            <span class="cs-header">Total Won:</span>
+                            <p id="result-message-3"></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
